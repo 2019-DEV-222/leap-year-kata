@@ -33,9 +33,20 @@ class App extends React.Component {
       this.setState({ isLeapYear: 'Enter a number greater than 1581' });
     }
     else {
-      this.setState({ isLeapYear: '' });
+      this.finalCheckIfItsLeapYear(inputNumber);
     }
   }
+
+  finalCheckIfItsLeapYear(yearInput){
+   
+    let result = (yearInput % 100 === 0) ? (yearInput % 400 === 0) : (yearInput % 4 === 0);
+    if (result===true) {    
+     this.setState({isLeapYear:'It is a leap year!!'});      
+    }
+    else{
+     this.setState({isLeapYear:'It is not a leap year'});       
+    }     
+    }
 
   render() {
     return (

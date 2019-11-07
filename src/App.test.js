@@ -20,7 +20,7 @@ describe('Check if it is a leap year', ()=>{
   it('should show message if entered value is non-numeric',() => {
     let enteredYear = "abcd";
     appInstance.checkIfItsANumber(enteredYear);
-    
+
     expect(appInstance.state.isLeapYear).toEqual("Enter a number");   
   });
 
@@ -29,5 +29,17 @@ describe('Check if it is a leap year', ()=>{
     appInstance.checkIfYearWithinRange(enteredYear);
     
     expect(appInstance.state.isLeapYear).toEqual("Enter a number greater than 1581");
+  });
+
+  it('should show message that says that its not a leap year', () => {
+    let enteredYear = "1991";
+    appInstance.finalCheckIfItsLeapYear(enteredYear);
+    expect(appInstance.state.isLeapYear).toEqual("It is not a leap year");
+  });
+  
+  it('should show message saying that its a leap year', () => {
+    let enteredYear = "2000";
+    appInstance.finalCheckIfItsLeapYear(enteredYear);
+    expect(appInstance.state.isLeapYear).toEqual("It is a leap year!!");
   });
 });
