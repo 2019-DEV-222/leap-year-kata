@@ -18,9 +18,16 @@ describe('App Component', () => {
 describe('Check if it is a leap year', ()=>{
  
   it('should show message if entered value is non-numeric',() => {
-   
     let enteredYear = "abcd";
     appInstance.checkIfItsANumber(enteredYear);
+    
     expect(appInstance.state.isLeapYear).toEqual("Enter a number");   
+  });
+
+  it('should show message to enter value greater than 1581', () => {
+    let enteredYear = "1111";
+    appInstance.checkIfYearWithinRange(enteredYear);
+    
+    expect(appInstance.state.isLeapYear).toEqual("Enter a number greater than 1581");
   });
 });

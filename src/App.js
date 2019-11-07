@@ -21,10 +21,19 @@ class App extends React.Component {
     let userInput = enteredNumber;
     const numberPattern = new RegExp("^[0-9]+$");
     if (numberPattern.test(userInput)) {
-      this.setState({ isLeapYear: '' });
+      this.checkIfYearWithinRange(userInput);
     }
     else {
       this.setState({ isLeapYear: 'Enter a number' });
+    }
+  }
+
+  checkIfYearWithinRange = inputNumber => {
+    if (inputNumber < 1582) {
+      this.setState({ isLeapYear: 'Enter a number greater than 1581' });
+    }
+    else {
+      this.setState({ isLeapYear: '' });
     }
   }
 
